@@ -27,10 +27,10 @@ void main()
 			burst_list[i] = 0;
 			check_2 = 1;
 		}
-        else if (burst_list[i] > 0) {
+		else if (burst_list[i] > 0) {
 			burst_list[i] -= quantum;
 			turnaround_time += quantum;
-            
+
 			if (check_1 == 1) {
 				avarage_response_time++;
 				check_1 = 0;
@@ -38,25 +38,25 @@ void main()
 		}
 		if (check_2 == 1 && burst_list[i] == 0) {
 			remaining--;
-            avarage_wait_time += (turnaround_time - process_list[i].burst_time - process_list[i].arrival_time);
-		  	avarage_active_time += (turnaround_time - process_list[i].arrival_time);
+			avarage_wait_time += (turnaround_time - process_list[i].burst_time - process_list[i].arrival_time);
+			avarage_active_time += (turnaround_time - process_list[i].arrival_time);
 			check_2 = 0;
 		}
 		if (i == quantity - 1) {
 			i = 0;
 			check_1 = 1;
 		}
-        else if (process_list[i+1].arrival_time <= turnaround_time) {
+		else if (process_list[i+1].arrival_time <= turnaround_time) {
 			i++;
-        }
+		}
 		else {
 			i = 0;
-        }
-    }
-    avarage_active_time /= quantity;
-    avarage_response_time /= quantity;
+		}
+	}
+	avarage_active_time /= quantity;
+	avarage_response_time /= quantity;
 	avarage_wait_time /= quantity;
-    avarage_active_time += 1;
-    avarage_wait_time += 1;
+	avarage_active_time += 1;
+	avarage_wait_time += 1;
 	printf("RR %.1f %.1f %.1f\n", avarage_active_time , avarage_response_time, avarage_wait_time);
 }
