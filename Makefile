@@ -1,5 +1,5 @@
-binary: scheduling_exercise.cpp
-	g++ $< -o $@
+binary: scheduling_exercise.c
+	gcc $< -o $@
 
 .PHONY: run clean
 
